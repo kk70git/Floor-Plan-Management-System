@@ -28,7 +28,7 @@ async function handler(req, res) {
       // 2. Gather Data (User & Plans)
       const userId = req.user.id; 
       const currentUser = await User.findById(userId);
-
+      const allPlans = await FloorPlan.find({});
       // 3. OOPS: Instantiate the Engine
       // We create an "Object" that holds the state (user, plans) and behavior (logic)
       const engine = new RecommendationEngine(currentUser, allPlans);
